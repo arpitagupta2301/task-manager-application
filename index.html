@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Manager Application</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="workspace" aria-label="Task manager">
+      <header class="app-header">
+        <div>
+          <p class="eyebrow">Personal Project</p>
+          <h1>Task Manager</h1>
+        </div>
+        <div class="task-count" aria-live="polite">
+          <span id="totalTasks">0</span>
+          <small>Tasks</small>
+        </div>
+      </header>
+
+      <form class="task-form" id="taskForm">
+        <input type="hidden" id="taskId">
+        <label>
+          <span>Task title</span>
+          <input type="text" id="taskTitle" placeholder="Add a task..." required maxlength="80">
+        </label>
+        <label>
+          <span>Priority</span>
+          <select id="taskPriority">
+            <option value="High">High</option>
+            <option value="Medium" selected>Medium</option>
+            <option value="Low">Low</option>
+          </select>
+        </label>
+        <label>
+          <span>Due date</span>
+          <input type="date" id="taskDueDate">
+        </label>
+        <label class="notes-field">
+          <span>Notes</span>
+          <textarea id="taskNotes" placeholder="Optional details" maxlength="180"></textarea>
+        </label>
+        <div class="form-actions">
+          <button type="submit" id="submitBtn">Add Task</button>
+          <button type="button" class="secondary" id="cancelEditBtn" hidden>Cancel</button>
+        </div>
+      </form>
+
+      <div class="toolbar" aria-label="Task filters">
+        <button class="filter-btn active" data-filter="All" type="button">All</button>
+        <button class="filter-btn" data-filter="High" type="button">High</button>
+        <button class="filter-btn" data-filter="Medium" type="button">Medium</button>
+        <button class="filter-btn" data-filter="Low" type="button">Low</button>
+      </div>
+
+      <section class="task-list" id="taskList" aria-live="polite"></section>
+    </section>
+  </main>
+
+  <template id="taskTemplate">
+    <article class="task-card">
+      <div class="task-main">
+        <div class="task-topline">
+          <h2></h2>
+          <span class="priority-badge"></span>
+        </div>
+        <p class="task-notes"></p>
+        <p class="task-date"></p>
+      </div>
+      <div class="task-actions">
+        <button class="complete-btn" type="button"></button>
+        <button class="edit-btn" type="button">Edit</button>
+        <button class="delete-btn" type="button">Delete</button>
+      </div>
+    </article>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
